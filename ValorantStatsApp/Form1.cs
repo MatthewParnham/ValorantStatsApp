@@ -51,11 +51,32 @@ namespace ValorantStatsApp
             HeroComboBox.Items.Insert(0, "Any");
             MapComboBox.SelectedIndex = 0;
             HeroComboBox.SelectedIndex = 0;
+            MapComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            HeroComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string CmdString = "SELECT Heroes.Name, COUNT(Hero) FROM Scoreboard JOIN Heroes on Hero = HeroID GROUP BY Heroes.Name ORDER BY COUNT(Hero)";
+            string CmdString = "SELECT PlayerName, Heroes.Name as Hero, Kills, Deaths, Maps.Name as Map FROM Scoreboard JOIN Heroes ON Scoreboard.Hero = Heroes.HeroID JOIN MatchDetails MD on Scoreboard.MatchID = MD.MatchID JOIN Maps ON MD.Map = Maps.MapID";
+            bool hasWhere = false;
+            if (HeroComboBox.SelectedIndex != 0)
+            {
+                CmdString += " WHERE Heroes.Name = '" + HeroComboBox.SelectedItem + "'";
+                hasWhere = true;
+            }
+            if(MapComboBox.SelectedIndex != 0)
+            {
+                if(hasWhere)
+                {
+                    CmdString += " AND Maps.Name = '" + MapComboBox.SelectedItem + "'";
+                } else
+                {
+                    CmdString += " WHERE Maps.Name = '" + MapComboBox.SelectedItem + "'";
+                }
+                
+            }
+
+            
             DataTable output = CreateQuery(CmdString);
             dataGridView1.DataSource = output.DefaultView;
             
