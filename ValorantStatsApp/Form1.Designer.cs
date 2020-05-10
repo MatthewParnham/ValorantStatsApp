@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.MapComboBox = new System.Windows.Forms.ComboBox();
             this.HeroComboBox = new System.Windows.Forms.ComboBox();
@@ -236,6 +237,7 @@
             this.Controls.Add(this.HeroComboBox);
             this.Controls.Add(this.MapComboBox);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Valorant Stats App";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
