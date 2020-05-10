@@ -24,12 +24,37 @@ namespace ValorantStatsApp
             InitializeComponent();
             con = new MySqlConnection(ConString);
             loadComboBoxes();
-            comboBox1.SelectedIndex = 0;
+            UpdateMatchDetails();
+            dateTimePicker1.Value = DateTime.Today.AddYears(-50);
+            dateTimePicker2.Value = DateTime.Today;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
+            UpdateScoreboard();
+        }
 
+        private void UpdateScoreboard()
+        {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                string currMatchID = (string)dataGridView1.SelectedCells[0].Value.ToString();
+                string currHero;
+                if (HeroComboBox.SelectedIndex == 0)
+                {
+                    currHero = "";
+                }
+                else
+                {
+                    currHero = (string)HeroComboBox.SelectedItem;
+                }
+                string scoreboardQuery = String.Format("SELECT MatchID, PlayerName, Heroes.Name as Hero, AVGCombatScore, Kills, Deaths, Assists, EconRating, FirstBloods, Plants, Defuses FROM Scoreboard JOIN Heroes on Scoreboard.Hero = Heroes.HeroID WHERE MatchID = {0} AND Heroes.Name LIKE '%{1}%'", currMatchID, currHero);
+                DataTable output = CreateQuery(scoreboardQuery);
+                dataGridView2.DataSource = output.DefaultView;
+                dataGridView2.Columns["MatchID"].Visible = false;
+            }
         }
 
         private void loadComboBoxes()
@@ -51,35 +76,10 @@ namespace ValorantStatsApp
             HeroComboBox.Items.Insert(0, "Any");
             MapComboBox.SelectedIndex = 0;
             HeroComboBox.SelectedIndex = 0;
+            WinLossComboBox.SelectedIndex = 0;
             MapComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             HeroComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string CmdString = "SELECT PlayerName, Heroes.Name as Hero, Kills, Deaths, Maps.Name as Map FROM Scoreboard JOIN Heroes ON Scoreboard.Hero = Heroes.HeroID JOIN MatchDetails MD on Scoreboard.MatchID = MD.MatchID JOIN Maps ON MD.Map = Maps.MapID";
-            bool hasWhere = false;
-            if (HeroComboBox.SelectedIndex != 0)
-            {
-                CmdString += " WHERE Heroes.Name = '" + HeroComboBox.SelectedItem + "'";
-                hasWhere = true;
-            }
-            if(MapComboBox.SelectedIndex != 0)
-            {
-                if(hasWhere)
-                {
-                    CmdString += " AND Maps.Name = '" + MapComboBox.SelectedItem + "'";
-                } else
-                {
-                    CmdString += " WHERE Maps.Name = '" + MapComboBox.SelectedItem + "'";
-                }
-                
-            }
-
-            
-            DataTable output = CreateQuery(CmdString);
-            dataGridView1.DataSource = output.DefaultView;
-            
+            WinLossComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private DataTable CreateQuery(string CmdString)
@@ -90,14 +90,54 @@ namespace ValorantStatsApp
             return ds.Tables[0];
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateMatchDetails()
         {
-
+            string mapSelection;
+            if (MapComboBox.SelectedIndex == 0)
+            {
+                mapSelection = "";
+            }
+            else
+            {
+                mapSelection = (string)MapComboBox.SelectedItem;
+            }
+            string won;
+            if (WinLossComboBox.SelectedIndex == 0)
+            {
+                won = "";
+            } else if(WinLossComboBox.SelectedIndex == 1)
+            {
+                won = "1";
+            } else
+            {
+                won = "0";
+            }
+            string minDate = dateTimePicker1.Value.Date.Year + "-" + dateTimePicker1.Value.Date.Month + "-" + dateTimePicker1.Value.Date.Day;
+            string maxDate = dateTimePicker2.Value.Date.Year + "-" + dateTimePicker2.Value.Date.Month + "-" + dateTimePicker2.Value.Date.Day;
+            string CmdString = String.Format("SELECT MatchID, Maps.Name as Map, Win, RoundsWon, RoundsLost, Date FROM MatchDetails JOIN Maps on MatchDetails.Map = Maps.MapID WHERE Maps.Name LIKE '%{0}%' AND Date BETWEEN '{1}' AND '{2}' AND Win LIKE '%{3}%'", mapSelection,minDate,maxDate,won);
+            DataTable output = CreateQuery(CmdString);
+            dataGridView1.DataSource = output.DefaultView;
+            dataGridView1.Columns["MatchID"].Visible = false;
         }
 
         private void MapComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            UpdateMatchDetails();
+        }
 
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateMatchDetails();
+        }
+
+        private void WinLossComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateMatchDetails();
+        }
+
+        private void HeroComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateScoreboard();
         }
     }
 }
