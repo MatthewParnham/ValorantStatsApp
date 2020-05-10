@@ -29,11 +29,17 @@ namespace ValorantStatsApp
             dateTimePicker2.Value = DateTime.Today;
             dataGridView1.MultiSelect = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView3.AllowUserToAddRows = false;
+            dataGridView4.AllowUserToAddRows = false;
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             UpdateScoreboard();
+            UpdateTimeLine();
+            UpdatePerformance();
         }
 
         private void UpdateScoreboard()
@@ -54,6 +60,30 @@ namespace ValorantStatsApp
                 DataTable output = CreateQuery(scoreboardQuery);
                 dataGridView2.DataSource = output.DefaultView;
                 dataGridView2.Columns["MatchID"].Visible = false;
+            }
+        }
+
+        private void UpdateTimeLine()
+        {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                string currMatchID = (string)dataGridView1.SelectedCells[0].Value.ToString();
+                string scoreboardQuery = String.Format("SELECT MatchID, RoundNum, Score, Kills, Assists, Died, MoneySpent, Weapons.Name as Weapon, Won FROM Timeline JOIN Weapons on Timeline.Weapon = Weapons.WeaponID WHERE MatchID = {0}",currMatchID);
+                DataTable output = CreateQuery(scoreboardQuery);
+                dataGridView3.DataSource = output.DefaultView;
+                dataGridView3.Columns["MatchID"].Visible = false;
+            }
+        }
+
+        private void UpdatePerformance()
+        {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                string currMatchID = (string)dataGridView1.SelectedCells[0].Value.ToString();
+                string scoreboardQuery = String.Format("SELECT MatchID, PlayerName, Kills, Deaths, Assists FROM Performance WHERE MatchID = {0}", currMatchID);
+                DataTable output = CreateQuery(scoreboardQuery);
+                dataGridView4.DataSource = output.DefaultView;
+                dataGridView4.Columns["MatchID"].Visible = false;
             }
         }
 
