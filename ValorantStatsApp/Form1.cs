@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Diagnostics;
+using System.IO;
 
 namespace ValorantStatsApp
 {
@@ -41,6 +42,8 @@ namespace ValorantStatsApp
             UpdateTimeLine();
             UpdatePerformance();
         }
+
+
 
         private void UpdateScoreboard()
         {
@@ -168,6 +171,123 @@ namespace ValorantStatsApp
         private void HeroComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateScoreboard();
+        }
+
+        private void MatchReportButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fDialog = new SaveFileDialog
+            {
+                InitialDirectory = @"C:\",
+                Title = "Select Location",
+                FileName = "Report_" + DateTime.Today.Month + "-" + DateTime.Today.Day,
+
+                CheckFileExists = false,
+                CheckPathExists = false,
+
+                DefaultExt = "csv",
+                Filter = "csv files (*.csv)|*.csv",
+                FilterIndex = 2,
+                RestoreDirectory = true
+            };
+
+            if (fDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = fDialog.FileName;
+                Debug.WriteLine(filePath);
+                bool fileError = false;
+                if (File.Exists(filePath))
+                {
+                    try
+                    {
+                        File.Delete(filePath);
+                    }
+                    catch (IOException ex)
+                    {
+                        fileError = true;
+                        MessageBox.Show("It wasn't possible to write the data to the disk." + ex.Message);
+                    }
+                }
+                if (!fileError)
+                {
+                    try
+                    {
+                        int columnCount = dataGridView1.Columns.Count;
+                        string columnNames = "";
+                        string matchDetails = "";
+                        string[] outputCsv = new string[4 + dataGridView2.Rows.Count + 2 + dataGridView3.Rows.Count + 2 + dataGridView4.Rows.Count + 5];
+                        int lineIdx = 0;
+                        for (int i = 0; i < columnCount; i++)
+                        {
+                            columnNames += dataGridView1.Columns[i].HeaderText.ToString() + ",";
+                            matchDetails += dataGridView1.SelectedCells[i].Value + ",";
+
+                        }
+                        outputCsv[lineIdx++] += columnNames;
+                        outputCsv[lineIdx++] += matchDetails;
+                        outputCsv[lineIdx++] += ",";
+                        outputCsv[lineIdx++] += "Scoreboard,";
+                        columnCount = dataGridView2.Columns.Count;
+                        columnNames = "";
+                        for (int i = 0; i < columnCount; i++)
+                        {
+                            columnNames += dataGridView2.Columns[i].HeaderText.ToString() + ",";
+                        }
+                        outputCsv[lineIdx++] += columnNames;
+                        for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < columnCount; j++)
+                            {
+                                outputCsv[lineIdx] += dataGridView2.Rows[i].Cells[j].Value.ToString() + ",";
+                            }
+                            lineIdx++;
+                        }
+
+                        outputCsv[lineIdx++] += ",";
+                        outputCsv[lineIdx++] += "Timeline,";
+                        columnCount = dataGridView3.Columns.Count;
+                        columnNames = "";
+                        for (int i = 0; i < columnCount; i++)
+                        {
+                            columnNames += dataGridView3.Columns[i].HeaderText.ToString() + ",";
+                        }
+                        outputCsv[lineIdx++] += columnNames;
+                        for (int i = 0; i < dataGridView3.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < columnCount; j++)
+                            {
+                                outputCsv[lineIdx] += dataGridView3.Rows[i].Cells[j].Value.ToString() + ",";
+                            }
+                            lineIdx++;
+                        }
+
+                        outputCsv[lineIdx++] += ",";
+                        outputCsv[lineIdx++] += "Performance,";
+                        columnCount = dataGridView4.Columns.Count;
+                        columnNames = "";
+                        for (int i = 0; i < columnCount; i++)
+                        {
+                            columnNames += dataGridView4.Columns[i].HeaderText.ToString() + ",";
+                        }
+                        outputCsv[lineIdx++] += columnNames;
+                        for (int i = 0; i < dataGridView4.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < columnCount; j++)
+                            {
+                                outputCsv[lineIdx] += dataGridView4.Rows[i].Cells[j].Value.ToString() + ",";
+                            }
+                            lineIdx++;
+                        }
+
+                        File.WriteAllLines(filePath, outputCsv, Encoding.UTF8);
+                        MessageBox.Show("Report Generated Successfully.", "Info");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error :" + ex.Message);
+                    }
+                }
+
+            }
         }
     }
 }

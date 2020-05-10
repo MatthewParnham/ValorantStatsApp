@@ -45,6 +45,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
+            this.MatchReportButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -202,11 +203,22 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Performance";
             // 
+            // MatchReportButton
+            // 
+            this.MatchReportButton.Location = new System.Drawing.Point(1384, 792);
+            this.MatchReportButton.Name = "MatchReportButton";
+            this.MatchReportButton.Size = new System.Drawing.Size(131, 44);
+            this.MatchReportButton.TabIndex = 20;
+            this.MatchReportButton.Text = "Generate Match Report";
+            this.MatchReportButton.UseVisualStyleBackColor = true;
+            this.MatchReportButton.Click += new System.EventHandler(this.MatchReportButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.MatchReportButton);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dataGridView4);
             this.Controls.Add(this.label7);
@@ -225,7 +237,7 @@
             this.Controls.Add(this.MapComboBox);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Valorant Stats App";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
@@ -254,6 +266,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button MatchReportButton;
     }
 }
 
