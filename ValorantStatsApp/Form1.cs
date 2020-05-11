@@ -43,6 +43,11 @@ namespace ValorantStatsApp
             UpdatePerformance();
         }
 
+        private void dataGridView2_CellChanged(object sender, EventArgs e)
+        {
+            DataTable dt = ((DataTable)dataGridView2.DataSource);
+            //Debug.WriteLine(((DataTable)dataGridView2.DataSource).GetChanges(DataRowState.Modified).Rows);
+        }
 
 
         private void UpdateScoreboard()
