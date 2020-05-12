@@ -43,10 +43,59 @@ namespace ValorantStatsApp
             UpdatePerformance();
         }
 
-        private void dataGridView2_CellChanged(object sender, EventArgs e)
+        private void dataGridView2_CellChanged(object sender, DataGridViewCellEventArgs e)
         {
-            DataTable dt = ((DataTable)dataGridView2.DataSource);
-            //Debug.WriteLine(((DataTable)dataGridView2.DataSource).GetChanges(DataRowState.Modified).Rows);
+            UpdateCell(dataGridView2, e.RowIndex, e.ColumnIndex);
+        }
+
+        private void UpdateCell(DataGridView dgv, int row, int col)
+        {
+            string colHeader = dgv.Columns[col].HeaderText;
+            string newValue = dgv.Rows[row].Cells[col].Value.ToString();
+            string pkHeader = dgv.Columns[0].HeaderText;
+            string skHeader = dgv.Columns[1].HeaderText;
+            string pk = dgv.Rows[row].Cells[0].Value.ToString();
+            string sk = dgv.Rows[row].Cells[1].Value.ToString();
+            string updateQuery = String.Format("UPDATE {0} SET {1} = '{2}' WHERE {3} = {4} AND {5} = '{6}'",dgv.Tag,colHeader,newValue,pkHeader,pk,skHeader,sk);
+            Debug.WriteLine(updateQuery);
+            MySqlTransaction tr = null;
+            con.Open();
+            try
+            {
+                tr = con.BeginTransaction();
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = con;
+                cmd.Transaction = tr;
+
+
+                cmd.CommandText = updateQuery;
+
+                cmd.ExecuteNonQuery();
+
+
+                tr.Commit();
+            }
+            catch (MySqlException ex)
+            {
+                try
+                {
+                    tr.Rollback();
+                }
+                catch (MySqlException ex1)
+                {
+                    MessageBox.Show(ex1.ToString());
+                }
+
+                MessageBox.Show(ex.ToString());
+            }
+            con.Close();
+        }
+
+        private void Rollback()
+        {
+            string rollbackQuery = "";
+
         }
 
 
@@ -68,6 +117,7 @@ namespace ValorantStatsApp
                 DataTable output = CreateQuery(scoreboardQuery);
                 dataGridView2.DataSource = output.DefaultView;
                 dataGridView2.Columns["MatchID"].Visible = false;
+                dataGridView2.Columns["PlayerName"].ReadOnly = true;
             }
         }
 
@@ -80,6 +130,7 @@ namespace ValorantStatsApp
                 DataTable output = CreateQuery(scoreboardQuery);
                 dataGridView3.DataSource = output.DefaultView;
                 dataGridView3.Columns["MatchID"].Visible = false;
+                dataGridView3.Columns["RoundNum"].ReadOnly = true;
             }
         }
 
@@ -92,6 +143,7 @@ namespace ValorantStatsApp
                 DataTable output = CreateQuery(scoreboardQuery);
                 dataGridView4.DataSource = output.DefaultView;
                 dataGridView4.Columns["MatchID"].Visible = false;
+                dataGridView4.Columns["PlayerName"].ReadOnly = true;
             }
         }
 
