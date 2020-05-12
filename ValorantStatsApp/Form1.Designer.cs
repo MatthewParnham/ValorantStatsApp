@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.MapComboBox = new System.Windows.Forms.ComboBox();
@@ -47,12 +50,25 @@
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.MatchReportButton = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.matchesPanel = new System.Windows.Forms.Panel();
+            this.StatsPageButton = new System.Windows.Forms.Button();
+            this.statsPanel = new System.Windows.Forms.Panel();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.weaponsDataGridView = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.HeroDataGridView = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.UsernameBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.matchesPanel.SuspendLayout();
+            this.statsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeroDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -177,7 +193,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(505, 504);
+            this.label6.Location = new System.Drawing.Point(488, 504);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 13);
             this.label6.TabIndex = 16;
@@ -186,7 +202,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(628, 405);
+            this.label7.Location = new System.Drawing.Point(616, 61);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 13);
             this.label7.TabIndex = 17;
@@ -204,7 +220,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(65, 493);
+            this.label8.Location = new System.Drawing.Point(29, 504);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 13);
             this.label8.TabIndex = 19;
@@ -220,28 +236,131 @@
             this.MatchReportButton.UseVisualStyleBackColor = true;
             this.MatchReportButton.Click += new System.EventHandler(this.MatchReportButton_Click);
             // 
-            // panel1
+            // matchesPanel
             // 
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.MatchReportButton);
-            this.panel1.Controls.Add(this.MapComboBox);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.dataGridView4);
-            this.panel1.Controls.Add(this.WinLossComboBox);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.dataGridView3);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.dataGridView2);
-            this.panel1.Controls.Add(this.dateTimePicker2);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.HeroComboBox);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1560, 837);
-            this.panel1.TabIndex = 21;
+            this.matchesPanel.Controls.Add(this.label7);
+            this.matchesPanel.Controls.Add(this.label8);
+            this.matchesPanel.Controls.Add(this.StatsPageButton);
+            this.matchesPanel.Controls.Add(this.label5);
+            this.matchesPanel.Controls.Add(this.MatchReportButton);
+            this.matchesPanel.Controls.Add(this.MapComboBox);
+            this.matchesPanel.Controls.Add(this.label1);
+            this.matchesPanel.Controls.Add(this.dataGridView4);
+            this.matchesPanel.Controls.Add(this.WinLossComboBox);
+            this.matchesPanel.Controls.Add(this.label2);
+            this.matchesPanel.Controls.Add(this.dataGridView3);
+            this.matchesPanel.Controls.Add(this.label6);
+            this.matchesPanel.Controls.Add(this.dataGridView2);
+            this.matchesPanel.Controls.Add(this.dateTimePicker2);
+            this.matchesPanel.Controls.Add(this.dataGridView1);
+            this.matchesPanel.Controls.Add(this.dateTimePicker1);
+            this.matchesPanel.Controls.Add(this.label4);
+            this.matchesPanel.Controls.Add(this.label3);
+            this.matchesPanel.Controls.Add(this.HeroComboBox);
+            this.matchesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.matchesPanel.Location = new System.Drawing.Point(0, 0);
+            this.matchesPanel.Name = "matchesPanel";
+            this.matchesPanel.Size = new System.Drawing.Size(1584, 861);
+            this.matchesPanel.TabIndex = 21;
+            // 
+            // StatsPageButton
+            // 
+            this.StatsPageButton.Location = new System.Drawing.Point(1497, 12);
+            this.StatsPageButton.Name = "StatsPageButton";
+            this.StatsPageButton.Size = new System.Drawing.Size(75, 23);
+            this.StatsPageButton.TabIndex = 21;
+            this.StatsPageButton.Text = "View Stats";
+            this.StatsPageButton.UseVisualStyleBackColor = true;
+            this.StatsPageButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // statsPanel
+            // 
+            this.statsPanel.Controls.Add(this.UsernameBox);
+            this.statsPanel.Controls.Add(this.label10);
+            this.statsPanel.Controls.Add(this.HeroDataGridView);
+            this.statsPanel.Controls.Add(this.label9);
+            this.statsPanel.Controls.Add(this.weaponsDataGridView);
+            this.statsPanel.Controls.Add(this.chart1);
+            this.statsPanel.Controls.Add(this.BackButton);
+            this.statsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statsPanel.Location = new System.Drawing.Point(0, 0);
+            this.statsPanel.Name = "statsPanel";
+            this.statsPanel.Size = new System.Drawing.Size(1584, 861);
+            this.statsPanel.TabIndex = 22;
+            // 
+            // BackButton
+            // 
+            this.BackButton.Location = new System.Drawing.Point(1497, 12);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(75, 23);
+            this.BackButton.TabIndex = 0;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(746, 217);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(426, 300);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
+            // 
+            // weaponsDataGridView
+            // 
+            this.weaponsDataGridView.AllowUserToAddRows = false;
+            this.weaponsDataGridView.AllowUserToDeleteRows = false;
+            this.weaponsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.weaponsDataGridView.Location = new System.Drawing.Point(32, 77);
+            this.weaponsDataGridView.Name = "weaponsDataGridView";
+            this.weaponsDataGridView.ReadOnly = true;
+            this.weaponsDataGridView.Size = new System.Drawing.Size(247, 413);
+            this.weaponsDataGridView.TabIndex = 2;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(32, 56);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(94, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Favorite Weapons";
+            // 
+            // HeroDataGridView
+            // 
+            this.HeroDataGridView.AllowUserToAddRows = false;
+            this.HeroDataGridView.AllowUserToDeleteRows = false;
+            this.HeroDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HeroDataGridView.Location = new System.Drawing.Point(319, 77);
+            this.HeroDataGridView.Name = "HeroDataGridView";
+            this.HeroDataGridView.ReadOnly = true;
+            this.HeroDataGridView.Size = new System.Drawing.Size(247, 413);
+            this.HeroDataGridView.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(319, 56);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Favorite Heroes";
+            // 
+            // UsernameBox
+            // 
+            this.UsernameBox.Location = new System.Drawing.Point(322, 29);
+            this.UsernameBox.Name = "UsernameBox";
+            this.UsernameBox.Size = new System.Drawing.Size(100, 20);
+            this.UsernameBox.TabIndex = 6;
+            this.UsernameBox.TextChanged += new System.EventHandler(this.UsernameBox_TextChanged);
             // 
             // Form1
             // 
@@ -249,9 +368,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.statsPanel);
+            this.Controls.Add(this.matchesPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Valorant Stats App";
@@ -259,10 +377,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.matchesPanel.ResumeLayout(false);
+            this.matchesPanel.PerformLayout();
+            this.statsPanel.ResumeLayout(false);
+            this.statsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeroDataGridView)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -286,7 +408,16 @@
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button MatchReportButton;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel matchesPanel;
+        private System.Windows.Forms.Button StatsPageButton;
+        private System.Windows.Forms.Panel statsPanel;
+        private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.DataGridView weaponsDataGridView;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox UsernameBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView HeroDataGridView;
     }
 }
 

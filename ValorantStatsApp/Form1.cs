@@ -26,6 +26,8 @@ namespace ValorantStatsApp
             con = new MySqlConnection(ConString);
             loadComboBoxes();
             UpdateMatchDetails();
+            UpdateWeaponsGrid();
+            UpdateHeroesGrid();
             dateTimePicker1.Value = DateTime.Today.AddYears(-50);
             dateTimePicker2.Value = DateTime.Today;
             dataGridView1.MultiSelect = false;
@@ -34,6 +36,8 @@ namespace ValorantStatsApp
             dataGridView2.AllowUserToAddRows = false;
             dataGridView3.AllowUserToAddRows = false;
             dataGridView4.AllowUserToAddRows = false;
+            matchesPanel.Show();
+            statsPanel.Hide();
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -92,12 +96,19 @@ namespace ValorantStatsApp
             con.Close();
         }
 
-        private void Rollback()
+        private void UpdateHeroesGrid()
         {
-            string rollbackQuery = "";
-
+            string CmdString = String.Format("SELECT Heroes.Name, COUNT(Hero) FROM Scoreboard JOIN Heroes on Hero = HeroID WHERE PlayerName LIKE '%{0}%' GROUP BY Heroes.Name ORDER BY COUNT(Hero)",UsernameBox.Text);
+            DataTable output = CreateQuery(CmdString);
+            HeroDataGridView.DataSource = output.DefaultView;
         }
 
+        private void UpdateWeaponsGrid()
+        {
+            string CmdString = "SELECT Weapons.Name, COUNT(Weapon) as TimesUsed FROM Timeline JOIN Weapons on Weapon = WeaponID GROUP BY Weapons.Name ORDER BY COUNT(Weapon)";
+            DataTable output = CreateQuery(CmdString);
+            weaponsDataGridView.DataSource = output.DefaultView;
+        }
 
         private void UpdateScoreboard()
         {
@@ -345,6 +356,23 @@ namespace ValorantStatsApp
                 }
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            matchesPanel.Hide();
+            statsPanel.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            matchesPanel.Show();
+            statsPanel.Hide();
+        }
+
+        private void UsernameBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateHeroesGrid();
         }
     }
 }
