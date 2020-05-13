@@ -52,6 +52,16 @@ namespace ValorantStatsApp
             UpdateCell(dataGridView2, e.RowIndex, e.ColumnIndex);
         }
 
+        private void dataGridView3_CellChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateCell(dataGridView3, e.RowIndex, e.ColumnIndex);
+        }
+
+        private void dataGridView4_CellChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateCell(dataGridView4, e.RowIndex, e.ColumnIndex);
+        }
+
         private void UpdateCell(DataGridView dgv, int row, int col)
         {
             string colHeader = dgv.Columns[col].HeaderText;

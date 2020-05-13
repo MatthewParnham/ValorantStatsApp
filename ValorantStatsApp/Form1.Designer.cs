@@ -180,6 +180,7 @@
             this.dataGridView3.Size = new System.Drawing.Size(908, 378);
             this.dataGridView3.TabIndex = 14;
             this.dataGridView3.Tag = "Timeline";
+            this.dataGridView3.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellChanged);
             // 
             // label5
             // 
@@ -216,6 +217,7 @@
             this.dataGridView4.Size = new System.Drawing.Size(441, 179);
             this.dataGridView4.TabIndex = 18;
             this.dataGridView4.Tag = "Performance";
+            this.dataGridView4.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellChanged);
             // 
             // label8
             // 
