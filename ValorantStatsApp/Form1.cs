@@ -66,6 +66,14 @@ namespace ValorantStatsApp
         {
             string colHeader = dgv.Columns[col].HeaderText;
             string newValue = dgv.Rows[row].Cells[col].Value.ToString();
+            if (newValue.ToLower() == "true")
+            {
+                newValue = "1";
+            }
+            if (newValue.ToLower() == "false")
+            {
+                newValue = "0";
+            }
             string pkHeader = dgv.Columns[0].HeaderText;
             string skHeader = dgv.Columns[1].HeaderText;
             string pk = dgv.Rows[row].Cells[0].Value.ToString();
