@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -53,22 +56,26 @@
             this.matchesPanel = new System.Windows.Forms.Panel();
             this.StatsPageButton = new System.Windows.Forms.Button();
             this.statsPanel = new System.Windows.Forms.Panel();
-            this.BackButton = new System.Windows.Forms.Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.weaponsDataGridView = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
-            this.HeroDataGridView = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
             this.UsernameBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.HeroDataGridView = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.weaponsDataGridView = new System.Windows.Forms.DataGridView();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.matchesPanel.SuspendLayout();
             this.statsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeroDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -79,6 +86,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(567, 378);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView1_RowDeleted);
             // 
             // MapComboBox
             // 
@@ -162,6 +170,7 @@
             this.dataGridView2.TabIndex = 12;
             this.dataGridView2.Tag = "Scoreboard";
             this.dataGridView2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellChanged);
+            this.dataGridView2.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView2_RowDeleted);
             // 
             // label4
             // 
@@ -277,6 +286,9 @@
             // 
             // statsPanel
             // 
+            this.statsPanel.Controls.Add(this.label12);
+            this.statsPanel.Controls.Add(this.label11);
+            this.statsPanel.Controls.Add(this.chart2);
             this.statsPanel.Controls.Add(this.UsernameBox);
             this.statsPanel.Controls.Add(this.label10);
             this.statsPanel.Controls.Add(this.HeroDataGridView);
@@ -290,51 +302,22 @@
             this.statsPanel.Size = new System.Drawing.Size(1584, 861);
             this.statsPanel.TabIndex = 22;
             // 
-            // BackButton
+            // UsernameBox
             // 
-            this.BackButton.Location = new System.Drawing.Point(1497, 12);
-            this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(75, 23);
-            this.BackButton.TabIndex = 0;
-            this.BackButton.Text = "Back";
-            this.BackButton.UseVisualStyleBackColor = true;
-            this.BackButton.Click += new System.EventHandler(this.button2_Click);
+            this.UsernameBox.Location = new System.Drawing.Point(322, 29);
+            this.UsernameBox.Name = "UsernameBox";
+            this.UsernameBox.Size = new System.Drawing.Size(100, 20);
+            this.UsernameBox.TabIndex = 6;
+            this.UsernameBox.TextChanged += new System.EventHandler(this.UsernameBox_TextChanged);
             // 
-            // chart1
+            // label10
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(746, 217);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(426, 300);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
-            // 
-            // weaponsDataGridView
-            // 
-            this.weaponsDataGridView.AllowUserToAddRows = false;
-            this.weaponsDataGridView.AllowUserToDeleteRows = false;
-            this.weaponsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.weaponsDataGridView.Location = new System.Drawing.Point(32, 77);
-            this.weaponsDataGridView.Name = "weaponsDataGridView";
-            this.weaponsDataGridView.ReadOnly = true;
-            this.weaponsDataGridView.Size = new System.Drawing.Size(247, 413);
-            this.weaponsDataGridView.TabIndex = 2;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(32, 56);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(94, 13);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Favorite Weapons";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(319, 56);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Favorite Heroes";
             // 
             // HeroDataGridView
             // 
@@ -347,22 +330,85 @@
             this.HeroDataGridView.Size = new System.Drawing.Size(247, 413);
             this.HeroDataGridView.TabIndex = 4;
             // 
-            // label10
+            // label9
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(319, 56);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 13);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Favorite Heroes";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(32, 56);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(94, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Favorite Weapons";
             // 
-            // UsernameBox
+            // weaponsDataGridView
             // 
-            this.UsernameBox.Location = new System.Drawing.Point(322, 29);
-            this.UsernameBox.Name = "UsernameBox";
-            this.UsernameBox.Size = new System.Drawing.Size(100, 20);
-            this.UsernameBox.TabIndex = 6;
-            this.UsernameBox.TextChanged += new System.EventHandler(this.UsernameBox_TextChanged);
+            this.weaponsDataGridView.AllowUserToAddRows = false;
+            this.weaponsDataGridView.AllowUserToDeleteRows = false;
+            this.weaponsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.weaponsDataGridView.Location = new System.Drawing.Point(32, 77);
+            this.weaponsDataGridView.Name = "weaponsDataGridView";
+            this.weaponsDataGridView.ReadOnly = true;
+            this.weaponsDataGridView.Size = new System.Drawing.Size(247, 413);
+            this.weaponsDataGridView.TabIndex = 2;
+            // 
+            // chart1
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(605, 77);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(936, 300);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
+            // 
+            // BackButton
+            // 
+            this.BackButton.Location = new System.Drawing.Point(1497, 12);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(75, 23);
+            this.BackButton.TabIndex = 0;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // chart2
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
+            this.chart2.Location = new System.Drawing.Point(605, 409);
+            this.chart2.Name = "chart2";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
+            this.chart2.Size = new System.Drawing.Size(936, 300);
+            this.chart2.TabIndex = 7;
+            this.chart2.Text = "chart2";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(602, 56);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(77, 13);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Kills Over Time";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(602, 393);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(93, 13);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Deaths Over Time";
             // 
             // Form1
             // 
@@ -383,9 +429,10 @@
             this.matchesPanel.PerformLayout();
             this.statsPanel.ResumeLayout(false);
             this.statsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeroDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -420,6 +467,9 @@
         private System.Windows.Forms.TextBox UsernameBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView HeroDataGridView;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
     }
 }
 

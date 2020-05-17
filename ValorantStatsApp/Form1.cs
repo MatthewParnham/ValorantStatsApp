@@ -38,6 +38,69 @@ namespace ValorantStatsApp
             dataGridView4.AllowUserToAddRows = false;
             matchesPanel.Show();
             statsPanel.Hide();
+            loadChart();
+        }
+
+        private void loadChart()
+        {
+            string query = String.Format("SELECT Kills, Date FROM Scoreboard JOIN MatchDetails MD on Scoreboard.MatchID = MD.MatchID WHERE PlayerName LIKE '%{0}%' ORDER BY Date",UsernameBox.Text);
+            DataTable data = CreateQuery(query);
+            chart1.Series["Series1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["Series1"].XValueMember = "Date";
+            chart1.Series["Series1"].YValueMembers = "Kills";
+            chart1.DataSource = data;
+
+            query = String.Format("SELECT Deaths, Date FROM Scoreboard JOIN MatchDetails MD on Scoreboard.MatchID = MD.MatchID WHERE PlayerName LIKE '%{0}%' ORDER BY Date", UsernameBox.Text);
+            DataTable data2 = CreateQuery(query);
+            chart2.Series["Series1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart2.Series["Series1"].XValueMember = "Date";
+            chart2.Series["Series1"].YValueMembers = "Deaths";
+            chart2.DataSource = data2;
+        }
+
+        private void dataGridView2_RowDeleted(object sender, DataGridViewRowEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_RowDeleted(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            Debug.WriteLine(e.Row.ToString());
+            string matchID = e.Row.Cells[0].Value.ToString();
+            string deleteQuery = String.Format("UPDATE MatchDetails SET isDeleted = 1 WHERE MatchID = {0}", matchID);
+            MySqlTransaction tr = null;
+            con.Open();
+            try
+            {
+                tr = con.BeginTransaction();
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = con;
+                cmd.Transaction = tr;
+
+
+                cmd.CommandText = deleteQuery;
+
+                cmd.ExecuteNonQuery();
+
+
+                tr.Commit();
+            }
+            catch (MySqlException ex)
+            {
+                try
+                {
+                    tr.Rollback();
+                }
+                catch (MySqlException ex1)
+                {
+                    MessageBox.Show(ex1.ToString());
+                }
+
+                MessageBox.Show(ex.ToString());
+            }
+            con.Close();
+            UpdateMatchDetails();
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -142,7 +205,7 @@ namespace ValorantStatsApp
                 {
                     currHero = (string)HeroComboBox.SelectedItem;
                 }
-                string scoreboardQuery = String.Format("SELECT MatchID, PlayerName, Heroes.Name as Hero, AVGCombatScore, Kills, Deaths, Assists, EconRating, FirstBloods, Plants, Defuses FROM Scoreboard JOIN Heroes on Scoreboard.Hero = Heroes.HeroID WHERE MatchID = {0} AND Heroes.Name LIKE '%{1}%'", currMatchID, currHero);
+                string scoreboardQuery = String.Format("SELECT Scoreboard.MatchID as MatchID, PlayerName, Heroes.Name as Hero, AVGCombatScore, Kills, Deaths, Assists, EconRating, FirstBloods, Plants, Defuses, Maps.Name as Map FROM Scoreboard JOIN Heroes on Scoreboard.Hero = Heroes.HeroID JOIN MatchDetails MD on Scoreboard.MatchID = MD.MatchID JOIN Maps on MD.Map = Maps.MapID WHERE Scoreboard.MatchID = {0} AND Heroes.Name LIKE '%{1}%'", currMatchID, currHero);
                 DataTable output = CreateQuery(scoreboardQuery);
                 dataGridView2.DataSource = output.DefaultView;
                 dataGridView2.Columns["MatchID"].Visible = false;
@@ -155,7 +218,7 @@ namespace ValorantStatsApp
             if (dataGridView1.SelectedCells.Count > 0)
             {
                 string currMatchID = (string)dataGridView1.SelectedCells[0].Value.ToString();
-                string scoreboardQuery = String.Format("SELECT MatchID, RoundNum, Score, Kills, Assists, Died, MoneySpent, Weapons.Name as Weapon, Won FROM Timeline JOIN Weapons on Timeline.Weapon = Weapons.WeaponID WHERE MatchID = {0}",currMatchID);
+                string scoreboardQuery = String.Format("SELECT Timeline.MatchID as MatchID, RoundNum, Score, Kills, Assists, Died, MoneySpent, Weapons.Name as Weapon, Won, Maps.Name as Map FROM Timeline JOIN Weapons on Timeline.Weapon = Weapons.WeaponID JOIN MatchDetails MD on Timeline.MatchID = MD.MatchID JOIN Maps on MD.Map = Maps.MapID WHERE Timeline.MatchID = {0}",currMatchID);
                 DataTable output = CreateQuery(scoreboardQuery);
                 dataGridView3.DataSource = output.DefaultView;
                 dataGridView3.Columns["MatchID"].Visible = false;
@@ -233,7 +296,7 @@ namespace ValorantStatsApp
             }
             string minDate = dateTimePicker1.Value.Date.Year + "-" + dateTimePicker1.Value.Date.Month + "-" + dateTimePicker1.Value.Date.Day;
             string maxDate = dateTimePicker2.Value.Date.Year + "-" + dateTimePicker2.Value.Date.Month + "-" + dateTimePicker2.Value.Date.Day;
-            string CmdString = String.Format("SELECT MatchID, Maps.Name as Map, Win, RoundsWon, RoundsLost, Date FROM MatchDetails JOIN Maps on MatchDetails.Map = Maps.MapID WHERE Maps.Name LIKE '%{0}%' AND Date BETWEEN '{1}' AND '{2}' AND Win LIKE '%{3}%'", mapSelection,minDate,maxDate,won);
+            string CmdString = String.Format("SELECT MatchID, Maps.Name as Map, Win, RoundsWon, RoundsLost, Date FROM MatchDetails JOIN Maps on MatchDetails.Map = Maps.MapID WHERE Maps.Name LIKE '%{0}%' AND Date BETWEEN '{1}' AND '{2}' AND Win LIKE '%{3}%' AND isDeleted = 0", mapSelection,minDate,maxDate,won);
             DataTable output = CreateQuery(CmdString);
             dataGridView1.DataSource = output.DefaultView;
             dataGridView1.Columns["MatchID"].Visible = false;
@@ -391,6 +454,7 @@ namespace ValorantStatsApp
         private void UsernameBox_TextChanged(object sender, EventArgs e)
         {
             UpdateHeroesGrid();
+            loadChart();
         }
     }
 }
