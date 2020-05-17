@@ -312,7 +312,7 @@ namespace ValorantStatsApp
             }
             string minDate = dateTimePicker1.Value.Date.Year + "-" + dateTimePicker1.Value.Date.Month + "-" + dateTimePicker1.Value.Date.Day;
             string maxDate = dateTimePicker2.Value.Date.Year + "-" + dateTimePicker2.Value.Date.Month + "-" + dateTimePicker2.Value.Date.Day;
-            string CmdString = String.Format("SELECT MatchID, Maps.Name as Map, Win, RoundsWon, RoundsLost, Date FROM MatchDetails JOIN Maps on MatchDetails.Map = Maps.MapID WHERE Maps.Name LIKE '%{0}%' AND Date BETWEEN '{1}' AND '{2}' AND Win LIKE '%{3}%' AND isDeleted = 0", mapSelection,minDate,maxDate,won);
+            string CmdString = String.Format("SELECT MatchID, Maps.Name as Map, Win, RoundsWon, RoundsLost, Date FROM EnabledMatches JOIN Maps on EnabledMatches.Map = Maps.MapID WHERE Maps.Name LIKE '%{0}%' AND Date BETWEEN '{1}' AND '{2}' AND Win LIKE '%{3}%'", mapSelection,minDate,maxDate,won);
             DataTable output = CreateQuery(CmdString);
             dataGridView1.DataSource = output.DefaultView;
             dataGridView1.Columns["MatchID"].Visible = false;
