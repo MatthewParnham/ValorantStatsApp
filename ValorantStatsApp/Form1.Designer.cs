@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.MapComboBox = new System.Windows.Forms.ComboBox();
@@ -56,6 +56,9 @@
             this.matchesPanel = new System.Windows.Forms.Panel();
             this.StatsPageButton = new System.Windows.Forms.Button();
             this.statsPanel = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.UsernameBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.HeroDataGridView = new System.Windows.Forms.DataGridView();
@@ -63,19 +66,26 @@
             this.weaponsDataGridView = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.BackButton = new System.Windows.Forms.Button();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.UploadMatchButton = new System.Windows.Forms.Button();
+            this.UploadPanel = new System.Windows.Forms.Panel();
+            this.UploadPage_BackButton = new System.Windows.Forms.Button();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.matchesPanel.SuspendLayout();
             this.statsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeroDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.UploadPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -249,6 +259,7 @@
             // 
             // matchesPanel
             // 
+            this.matchesPanel.Controls.Add(this.UploadMatchButton);
             this.matchesPanel.Controls.Add(this.label7);
             this.matchesPanel.Controls.Add(this.label8);
             this.matchesPanel.Controls.Add(this.StatsPageButton);
@@ -286,6 +297,10 @@
             // 
             // statsPanel
             // 
+            this.statsPanel.Controls.Add(this.label14);
+            this.statsPanel.Controls.Add(this.label13);
+            this.statsPanel.Controls.Add(this.dataGridView6);
+            this.statsPanel.Controls.Add(this.dataGridView5);
             this.statsPanel.Controls.Add(this.label12);
             this.statsPanel.Controls.Add(this.label11);
             this.statsPanel.Controls.Add(this.chart2);
@@ -301,6 +316,40 @@
             this.statsPanel.Name = "statsPanel";
             this.statsPanel.Size = new System.Drawing.Size(1584, 861);
             this.statsPanel.TabIndex = 22;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(602, 393);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(93, 13);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Deaths Over Time";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(602, 56);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(77, 13);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Kills Over Time";
+            // 
+            // chart2
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
+            this.chart2.Location = new System.Drawing.Point(605, 409);
+            this.chart2.Name = "chart2";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
+            this.chart2.Size = new System.Drawing.Size(936, 300);
+            this.chart2.TabIndex = 7;
+            this.chart2.Text = "chart2";
             // 
             // UsernameBox
             // 
@@ -327,7 +376,7 @@
             this.HeroDataGridView.Location = new System.Drawing.Point(319, 77);
             this.HeroDataGridView.Name = "HeroDataGridView";
             this.HeroDataGridView.ReadOnly = true;
-            this.HeroDataGridView.Size = new System.Drawing.Size(247, 413);
+            this.HeroDataGridView.Size = new System.Drawing.Size(247, 300);
             this.HeroDataGridView.TabIndex = 4;
             // 
             // label9
@@ -347,7 +396,7 @@
             this.weaponsDataGridView.Location = new System.Drawing.Point(32, 77);
             this.weaponsDataGridView.Name = "weaponsDataGridView";
             this.weaponsDataGridView.ReadOnly = true;
-            this.weaponsDataGridView.Size = new System.Drawing.Size(247, 413);
+            this.weaponsDataGridView.Size = new System.Drawing.Size(247, 300);
             this.weaponsDataGridView.TabIndex = 2;
             // 
             // chart1
@@ -376,39 +425,69 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // chart2
+            // UploadMatchButton
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
-            this.chart2.Location = new System.Drawing.Point(605, 409);
-            this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(936, 300);
-            this.chart2.TabIndex = 7;
-            this.chart2.Text = "chart2";
+            this.UploadMatchButton.Location = new System.Drawing.Point(174, 794);
+            this.UploadMatchButton.Name = "UploadMatchButton";
+            this.UploadMatchButton.Size = new System.Drawing.Size(121, 30);
+            this.UploadMatchButton.TabIndex = 10;
+            this.UploadMatchButton.Text = "Upload Match";
+            this.UploadMatchButton.UseVisualStyleBackColor = true;
+            this.UploadMatchButton.Click += new System.EventHandler(this.UploadMatchButton_Click);
             // 
-            // label11
+            // UploadPanel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(602, 56);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 13);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "Kills Over Time";
+            this.UploadPanel.Controls.Add(this.UploadPage_BackButton);
+            this.UploadPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UploadPanel.Location = new System.Drawing.Point(0, 0);
+            this.UploadPanel.Name = "UploadPanel";
+            this.UploadPanel.Size = new System.Drawing.Size(1584, 861);
+            this.UploadPanel.TabIndex = 22;
             // 
-            // label12
+            // UploadPage_BackButton
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(602, 393);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 13);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "Deaths Over Time";
+            this.UploadPage_BackButton.Location = new System.Drawing.Point(1497, 12);
+            this.UploadPage_BackButton.Name = "UploadPage_BackButton";
+            this.UploadPage_BackButton.Size = new System.Drawing.Size(75, 23);
+            this.UploadPage_BackButton.TabIndex = 0;
+            this.UploadPage_BackButton.Text = "Back";
+            this.UploadPage_BackButton.UseVisualStyleBackColor = true;
+            this.UploadPage_BackButton.Click += new System.EventHandler(this.UploadPage_BackButton_Click);
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Location = new System.Drawing.Point(32, 409);
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.Size = new System.Drawing.Size(244, 300);
+            this.dataGridView5.TabIndex = 10;
+            // 
+            // dataGridView6
+            // 
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Location = new System.Drawing.Point(319, 409);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.Size = new System.Drawing.Size(247, 300);
+            this.dataGridView6.TabIndex = 11;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(32, 392);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(140, 13);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "Performance in Games Won";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(319, 392);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(137, 13);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Performance in Games Lost";
             // 
             // Form1
             // 
@@ -418,6 +497,7 @@
             this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.statsPanel);
             this.Controls.Add(this.matchesPanel);
+            this.Controls.Add(this.UploadPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Valorant Stats App";
@@ -429,10 +509,13 @@
             this.matchesPanel.PerformLayout();
             this.statsPanel.ResumeLayout(false);
             this.statsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeroDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            this.UploadPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -470,6 +553,13 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.Button UploadMatchButton;
+        private System.Windows.Forms.Panel UploadPanel;
+        private System.Windows.Forms.Button UploadPage_BackButton;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView dataGridView6;
+        private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.Label label14;
     }
 }
 

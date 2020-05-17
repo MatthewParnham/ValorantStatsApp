@@ -28,6 +28,8 @@ namespace ValorantStatsApp
             UpdateMatchDetails();
             UpdateWeaponsGrid();
             UpdateHeroesGrid();
+            UpdateDataGridView5();
+            UpdateDateGridView6();
             dateTimePicker1.Value = DateTime.Today.AddYears(-50);
             dateTimePicker2.Value = DateTime.Today;
             dataGridView1.MultiSelect = false;
@@ -175,6 +177,20 @@ namespace ValorantStatsApp
                 MessageBox.Show(ex.ToString());
             }
             con.Close();
+        }
+
+        private void UpdateDataGridView5()
+        {
+            string CmdString = String.Format("SELECT AVGCombatScore, Kills, Deaths, Assists FROM Scoreboard WHERE PlayerName = '{0}' AND MatchID IN (SELECT MatchID FROM MatchDetails WHERE Win = 1)", UsernameBox.Text);
+            DataTable output = CreateQuery(CmdString);
+            dataGridView5.DataSource = output.DefaultView;
+        }
+
+        private void UpdateDateGridView6()
+        {
+            string CmdString = String.Format("SELECT AVGCombatScore, Kills, Deaths, Assists FROM Scoreboard WHERE PlayerName = '{0}' AND MatchID IN (SELECT MatchID FROM MatchDetails WHERE Win = 0)", UsernameBox.Text);
+            DataTable output = CreateQuery(CmdString);
+            dataGridView6.DataSource = output.DefaultView;
         }
 
         private void UpdateHeroesGrid()
@@ -454,7 +470,26 @@ namespace ValorantStatsApp
         private void UsernameBox_TextChanged(object sender, EventArgs e)
         {
             UpdateHeroesGrid();
+            UpdateDataGridView5();
+            UpdateDateGridView6();
             loadChart();
+        }
+
+        private void UploadPage_BackButton_Click(object sender, EventArgs e)
+        {
+            UploadPanel.Hide();
+            matchesPanel.Show();
+        }
+
+        private void UploadMatchButton_Click(object sender, EventArgs e)
+        {
+            UploadPanel.Show();
+            matchesPanel.Hide();
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
