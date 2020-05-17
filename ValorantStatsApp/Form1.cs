@@ -30,6 +30,7 @@ namespace ValorantStatsApp
             UpdateHeroesGrid();
             UpdateDataGridView5();
             UpdateDateGridView6();
+            UpdateDataGridView7();
             dateTimePicker1.Value = DateTime.Today.AddYears(-50);
             dateTimePicker2.Value = DateTime.Today;
             dataGridView1.MultiSelect = false;
@@ -191,6 +192,13 @@ namespace ValorantStatsApp
             string CmdString = String.Format("SELECT AVGCombatScore, Kills, Deaths, Assists FROM Scoreboard WHERE PlayerName = '{0}' AND MatchID IN (SELECT MatchID FROM MatchDetails WHERE Win = 0)", UsernameBox.Text);
             DataTable output = CreateQuery(CmdString);
             dataGridView6.DataSource = output.DefaultView;
+        }
+
+        private void UpdateDataGridView7()
+        {
+            string CmdString = String.Format("SELECT * FROM Practice");
+            DataTable output = CreateQuery(CmdString);
+            dataGridView7.DataSource = output.DefaultView;
         }
 
         private void UpdateHeroesGrid()
@@ -488,6 +496,28 @@ namespace ValorantStatsApp
         }
 
         private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PracticePanel_BackButton_Click(object sender, EventArgs e)
+        {
+            PracticePanel.Hide();
+            matchesPanel.Show();
+        }
+
+        private void PracticeButton_Click(object sender, EventArgs e)
+        {
+            PracticePanel.Show();
+            matchesPanel.Hide();
+        }
+
+        private void Practice_RowAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            Debug.WriteLine(dataGridView7.Rows[e.RowIndex].Cells[0].Value);
+        }
+
+        private void PracticePanel_UndoButton_Click(object sender, EventArgs e)
         {
 
         }

@@ -54,8 +54,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.MatchReportButton = new System.Windows.Forms.Button();
             this.matchesPanel = new System.Windows.Forms.Panel();
+            this.PracticeButton = new System.Windows.Forms.Button();
+            this.UploadMatchButton = new System.Windows.Forms.Button();
             this.StatsPageButton = new System.Windows.Forms.Button();
             this.statsPanel = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -66,26 +72,28 @@
             this.weaponsDataGridView = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.BackButton = new System.Windows.Forms.Button();
-            this.UploadMatchButton = new System.Windows.Forms.Button();
             this.UploadPanel = new System.Windows.Forms.Panel();
             this.UploadPage_BackButton = new System.Windows.Forms.Button();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.PracticePanel = new System.Windows.Forms.Panel();
+            this.PracticePanel_UndoButton = new System.Windows.Forms.Button();
+            this.PracticePanel_SaveButton = new System.Windows.Forms.Button();
+            this.dataGridView7 = new System.Windows.Forms.DataGridView();
+            this.PracticePanel_BackButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.matchesPanel.SuspendLayout();
             this.statsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeroDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.UploadPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            this.PracticePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -259,6 +267,7 @@
             // 
             // matchesPanel
             // 
+            this.matchesPanel.Controls.Add(this.PracticeButton);
             this.matchesPanel.Controls.Add(this.UploadMatchButton);
             this.matchesPanel.Controls.Add(this.label7);
             this.matchesPanel.Controls.Add(this.label8);
@@ -284,6 +293,27 @@
             this.matchesPanel.Name = "matchesPanel";
             this.matchesPanel.Size = new System.Drawing.Size(1584, 861);
             this.matchesPanel.TabIndex = 21;
+            // 
+            // PracticeButton
+            // 
+            this.PracticeButton.Enabled = false;
+            this.PracticeButton.Location = new System.Drawing.Point(1416, 12);
+            this.PracticeButton.Name = "PracticeButton";
+            this.PracticeButton.Size = new System.Drawing.Size(75, 23);
+            this.PracticeButton.TabIndex = 22;
+            this.PracticeButton.Text = "Practice";
+            this.PracticeButton.UseVisualStyleBackColor = true;
+            this.PracticeButton.Click += new System.EventHandler(this.PracticeButton_Click);
+            // 
+            // UploadMatchButton
+            // 
+            this.UploadMatchButton.Location = new System.Drawing.Point(174, 794);
+            this.UploadMatchButton.Name = "UploadMatchButton";
+            this.UploadMatchButton.Size = new System.Drawing.Size(121, 30);
+            this.UploadMatchButton.TabIndex = 10;
+            this.UploadMatchButton.Text = "Upload Match";
+            this.UploadMatchButton.UseVisualStyleBackColor = true;
+            this.UploadMatchButton.Click += new System.EventHandler(this.UploadMatchButton_Click);
             // 
             // StatsPageButton
             // 
@@ -316,6 +346,41 @@
             this.statsPanel.Name = "statsPanel";
             this.statsPanel.Size = new System.Drawing.Size(1584, 861);
             this.statsPanel.TabIndex = 22;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(319, 392);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(137, 13);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "Performance in Games Lost";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(32, 392);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(140, 13);
+            this.label13.TabIndex = 12;
+            this.label13.Text = "Performance in Games Won";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // dataGridView6
+            // 
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Location = new System.Drawing.Point(319, 409);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.Size = new System.Drawing.Size(247, 300);
+            this.dataGridView6.TabIndex = 11;
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Location = new System.Drawing.Point(32, 409);
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.Size = new System.Drawing.Size(244, 300);
+            this.dataGridView5.TabIndex = 10;
             // 
             // label12
             // 
@@ -425,16 +490,6 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // UploadMatchButton
-            // 
-            this.UploadMatchButton.Location = new System.Drawing.Point(174, 794);
-            this.UploadMatchButton.Name = "UploadMatchButton";
-            this.UploadMatchButton.Size = new System.Drawing.Size(121, 30);
-            this.UploadMatchButton.TabIndex = 10;
-            this.UploadMatchButton.Text = "Upload Match";
-            this.UploadMatchButton.UseVisualStyleBackColor = true;
-            this.UploadMatchButton.Click += new System.EventHandler(this.UploadMatchButton_Click);
-            // 
             // UploadPanel
             // 
             this.UploadPanel.Controls.Add(this.UploadPage_BackButton);
@@ -454,40 +509,55 @@
             this.UploadPage_BackButton.UseVisualStyleBackColor = true;
             this.UploadPage_BackButton.Click += new System.EventHandler(this.UploadPage_BackButton_Click);
             // 
-            // dataGridView5
+            // PracticePanel
             // 
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(32, 409);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(244, 300);
-            this.dataGridView5.TabIndex = 10;
+            this.PracticePanel.Controls.Add(this.PracticePanel_UndoButton);
+            this.PracticePanel.Controls.Add(this.PracticePanel_SaveButton);
+            this.PracticePanel.Controls.Add(this.dataGridView7);
+            this.PracticePanel.Controls.Add(this.PracticePanel_BackButton);
+            this.PracticePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PracticePanel.Location = new System.Drawing.Point(0, 0);
+            this.PracticePanel.Name = "PracticePanel";
+            this.PracticePanel.Size = new System.Drawing.Size(1584, 861);
+            this.PracticePanel.TabIndex = 14;
             // 
-            // dataGridView6
+            // PracticePanel_UndoButton
             // 
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Location = new System.Drawing.Point(319, 409);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(247, 300);
-            this.dataGridView6.TabIndex = 11;
+            this.PracticePanel_UndoButton.Location = new System.Drawing.Point(1154, 13);
+            this.PracticePanel_UndoButton.Name = "PracticePanel_UndoButton";
+            this.PracticePanel_UndoButton.Size = new System.Drawing.Size(75, 23);
+            this.PracticePanel_UndoButton.TabIndex = 3;
+            this.PracticePanel_UndoButton.Text = "Undo";
+            this.PracticePanel_UndoButton.UseVisualStyleBackColor = true;
+            this.PracticePanel_UndoButton.Click += new System.EventHandler(this.PracticePanel_UndoButton_Click);
             // 
-            // label13
+            // PracticePanel_SaveButton
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(32, 392);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(140, 13);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "Performance in Games Won";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.PracticePanel_SaveButton.Location = new System.Drawing.Point(1072, 11);
+            this.PracticePanel_SaveButton.Name = "PracticePanel_SaveButton";
+            this.PracticePanel_SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.PracticePanel_SaveButton.TabIndex = 2;
+            this.PracticePanel_SaveButton.Text = "Save";
+            this.PracticePanel_SaveButton.UseVisualStyleBackColor = true;
             // 
-            // label14
+            // dataGridView7
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(319, 392);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(137, 13);
-            this.label14.TabIndex = 13;
-            this.label14.Text = "Performance in Games Lost";
+            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView7.Location = new System.Drawing.Point(1072, 61);
+            this.dataGridView7.Name = "dataGridView7";
+            this.dataGridView7.Size = new System.Drawing.Size(419, 788);
+            this.dataGridView7.TabIndex = 1;
+            this.dataGridView7.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.Practice_RowAdded);
+            // 
+            // PracticePanel_BackButton
+            // 
+            this.PracticePanel_BackButton.Location = new System.Drawing.Point(1497, 12);
+            this.PracticePanel_BackButton.Name = "PracticePanel_BackButton";
+            this.PracticePanel_BackButton.Size = new System.Drawing.Size(75, 23);
+            this.PracticePanel_BackButton.TabIndex = 0;
+            this.PracticePanel_BackButton.Text = "Back";
+            this.PracticePanel_BackButton.UseVisualStyleBackColor = true;
+            this.PracticePanel_BackButton.Click += new System.EventHandler(this.PracticePanel_BackButton_Click);
             // 
             // Form1
             // 
@@ -495,9 +565,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1584, 861);
-            this.Controls.Add(this.statsPanel);
             this.Controls.Add(this.matchesPanel);
             this.Controls.Add(this.UploadPanel);
+            this.Controls.Add(this.statsPanel);
+            this.Controls.Add(this.PracticePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Valorant Stats App";
@@ -509,13 +580,15 @@
             this.matchesPanel.PerformLayout();
             this.statsPanel.ResumeLayout(false);
             this.statsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeroDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.UploadPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            this.PracticePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -560,6 +633,12 @@
         private System.Windows.Forms.DataGridView dataGridView6;
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel PracticePanel;
+        private System.Windows.Forms.Button PracticePanel_BackButton;
+        private System.Windows.Forms.Button PracticeButton;
+        private System.Windows.Forms.DataGridView dataGridView7;
+        private System.Windows.Forms.Button PracticePanel_UndoButton;
+        private System.Windows.Forms.Button PracticePanel_SaveButton;
     }
 }
 
