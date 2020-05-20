@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.MapComboBox = new System.Windows.Forms.ComboBox();
@@ -73,21 +73,26 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.BackButton = new System.Windows.Forms.Button();
             this.UploadPanel = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dataGridView11 = new System.Windows.Forms.DataGridView();
+            this.dataGridView10 = new System.Windows.Forms.DataGridView();
+            this.dataGridView9 = new System.Windows.Forms.DataGridView();
+            this.dataGridView8 = new System.Windows.Forms.DataGridView();
+            this.CommitUploadButton = new System.Windows.Forms.Button();
+            this.ClearUploadButton = new System.Windows.Forms.Button();
+            this.UploadPathButton = new System.Windows.Forms.Button();
+            this.UploadPathTextBox = new System.Windows.Forms.TextBox();
             this.UploadPage_BackButton = new System.Windows.Forms.Button();
             this.PracticePanel = new System.Windows.Forms.Panel();
-            this.PracticePanel_UndoButton = new System.Windows.Forms.Button();
-            this.PracticePanel_SaveButton = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.AddPracticeButton = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView7 = new System.Windows.Forms.DataGridView();
             this.PracticePanel_BackButton = new System.Windows.Forms.Button();
-            this.UploadPathTextBox = new System.Windows.Forms.TextBox();
-            this.UploadPathButton = new System.Windows.Forms.Button();
-            this.ClearUploadButton = new System.Windows.Forms.Button();
-            this.CommitUploadButton = new System.Windows.Forms.Button();
-            this.dataGridView8 = new System.Windows.Forms.DataGridView();
-            this.dataGridView9 = new System.Windows.Forms.DataGridView();
-            this.dataGridView10 = new System.Windows.Forms.DataGridView();
-            this.dataGridView11 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -101,12 +106,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.weaponsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.UploadPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
             this.PracticePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -414,16 +419,16 @@
             // 
             // chart2
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chart2.Legends.Add(legend5);
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
             this.chart2.Location = new System.Drawing.Point(605, 409);
             this.chart2.Name = "chart2";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chart2.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
             this.chart2.Size = new System.Drawing.Size(936, 300);
             this.chart2.TabIndex = 7;
             this.chart2.Text = "chart2";
@@ -478,16 +483,16 @@
             // 
             // chart1
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart1.Legends.Add(legend6);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(605, 77);
             this.chart1.Name = "chart1";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chart1.Series.Add(series6);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(936, 300);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
@@ -520,6 +525,82 @@
             this.UploadPanel.Size = new System.Drawing.Size(1584, 861);
             this.UploadPanel.TabIndex = 22;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1130, 205);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(284, 241);
+            this.textBox1.TabIndex = 9;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
+            // 
+            // dataGridView11
+            // 
+            this.dataGridView11.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView11.Location = new System.Drawing.Point(32, 649);
+            this.dataGridView11.Name = "dataGridView11";
+            this.dataGridView11.Size = new System.Drawing.Size(448, 175);
+            this.dataGridView11.TabIndex = 8;
+            // 
+            // dataGridView10
+            // 
+            this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView10.Location = new System.Drawing.Point(32, 409);
+            this.dataGridView10.Name = "dataGridView10";
+            this.dataGridView10.Size = new System.Drawing.Size(1042, 218);
+            this.dataGridView10.TabIndex = 7;
+            // 
+            // dataGridView9
+            // 
+            this.dataGridView9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView9.Location = new System.Drawing.Point(35, 174);
+            this.dataGridView9.Name = "dataGridView9";
+            this.dataGridView9.Size = new System.Drawing.Size(1039, 216);
+            this.dataGridView9.TabIndex = 6;
+            // 
+            // dataGridView8
+            // 
+            this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView8.Location = new System.Drawing.Point(35, 56);
+            this.dataGridView8.Name = "dataGridView8";
+            this.dataGridView8.Size = new System.Drawing.Size(445, 94);
+            this.dataGridView8.TabIndex = 5;
+            // 
+            // CommitUploadButton
+            // 
+            this.CommitUploadButton.Location = new System.Drawing.Point(1275, 128);
+            this.CommitUploadButton.Name = "CommitUploadButton";
+            this.CommitUploadButton.Size = new System.Drawing.Size(106, 44);
+            this.CommitUploadButton.TabIndex = 4;
+            this.CommitUploadButton.Text = "Commit Changes";
+            this.CommitUploadButton.UseVisualStyleBackColor = true;
+            // 
+            // ClearUploadButton
+            // 
+            this.ClearUploadButton.Location = new System.Drawing.Point(1154, 128);
+            this.ClearUploadButton.Name = "ClearUploadButton";
+            this.ClearUploadButton.Size = new System.Drawing.Size(101, 44);
+            this.ClearUploadButton.TabIndex = 3;
+            this.ClearUploadButton.Text = "Clear All";
+            this.ClearUploadButton.UseVisualStyleBackColor = true;
+            // 
+            // UploadPathButton
+            // 
+            this.UploadPathButton.Location = new System.Drawing.Point(1339, 74);
+            this.UploadPathButton.Name = "UploadPathButton";
+            this.UploadPathButton.Size = new System.Drawing.Size(75, 23);
+            this.UploadPathButton.TabIndex = 2;
+            this.UploadPathButton.Text = "Choose Files";
+            this.UploadPathButton.UseVisualStyleBackColor = true;
+            // 
+            // UploadPathTextBox
+            // 
+            this.UploadPathTextBox.Location = new System.Drawing.Point(1130, 77);
+            this.UploadPathTextBox.Name = "UploadPathTextBox";
+            this.UploadPathTextBox.Size = new System.Drawing.Size(203, 20);
+            this.UploadPathTextBox.TabIndex = 1;
+            // 
             // UploadPage_BackButton
             // 
             this.UploadPage_BackButton.Location = new System.Drawing.Point(1497, 12);
@@ -532,8 +613,13 @@
             // 
             // PracticePanel
             // 
-            this.PracticePanel.Controls.Add(this.PracticePanel_UndoButton);
-            this.PracticePanel.Controls.Add(this.PracticePanel_SaveButton);
+            this.PracticePanel.Controls.Add(this.label17);
+            this.PracticePanel.Controls.Add(this.label16);
+            this.PracticePanel.Controls.Add(this.label15);
+            this.PracticePanel.Controls.Add(this.AddPracticeButton);
+            this.PracticePanel.Controls.Add(this.textBox4);
+            this.PracticePanel.Controls.Add(this.textBox3);
+            this.PracticePanel.Controls.Add(this.textBox2);
             this.PracticePanel.Controls.Add(this.dataGridView7);
             this.PracticePanel.Controls.Add(this.PracticePanel_BackButton);
             this.PracticePanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -542,31 +628,71 @@
             this.PracticePanel.Size = new System.Drawing.Size(1584, 861);
             this.PracticePanel.TabIndex = 14;
             // 
-            // PracticePanel_UndoButton
+            // label17
             // 
-            this.PracticePanel_UndoButton.Location = new System.Drawing.Point(1154, 13);
-            this.PracticePanel_UndoButton.Name = "PracticePanel_UndoButton";
-            this.PracticePanel_UndoButton.Size = new System.Drawing.Size(75, 23);
-            this.PracticePanel_UndoButton.TabIndex = 3;
-            this.PracticePanel_UndoButton.Text = "Undo";
-            this.PracticePanel_UndoButton.UseVisualStyleBackColor = true;
-            this.PracticePanel_UndoButton.Click += new System.EventHandler(this.PracticePanel_UndoButton_Click);
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(1286, 71);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(79, 13);
+            this.label17.TabIndex = 10;
+            this.label17.Text = "Minutes Played";
             // 
-            // PracticePanel_SaveButton
+            // label16
             // 
-            this.PracticePanel_SaveButton.Location = new System.Drawing.Point(1072, 11);
-            this.PracticePanel_SaveButton.Name = "PracticePanel_SaveButton";
-            this.PracticePanel_SaveButton.Size = new System.Drawing.Size(75, 23);
-            this.PracticePanel_SaveButton.TabIndex = 2;
-            this.PracticePanel_SaveButton.Text = "Save";
-            this.PracticePanel_SaveButton.UseVisualStyleBackColor = true;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(1179, 71);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(51, 13);
+            this.label16.TabIndex = 9;
+            this.label16.Text = "Kill Count";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(1072, 71);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(73, 13);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "Practice Type";
+            // 
+            // AddPracticeButton
+            // 
+            this.AddPracticeButton.Location = new System.Drawing.Point(1392, 87);
+            this.AddPracticeButton.Name = "AddPracticeButton";
+            this.AddPracticeButton.Size = new System.Drawing.Size(75, 23);
+            this.AddPracticeButton.TabIndex = 7;
+            this.AddPracticeButton.Text = "Add";
+            this.AddPracticeButton.UseVisualStyleBackColor = true;
+            this.AddPracticeButton.Click += new System.EventHandler(this.AddPracticeButton_Click);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(1286, 90);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 6;
+            this.textBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PracticeBox_KeyDown);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(1179, 90);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 5;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(1072, 90);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 4;
             // 
             // dataGridView7
             // 
             this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView7.Location = new System.Drawing.Point(1072, 61);
+            this.dataGridView7.Location = new System.Drawing.Point(1072, 116);
             this.dataGridView7.Name = "dataGridView7";
-            this.dataGridView7.Size = new System.Drawing.Size(419, 788);
+            this.dataGridView7.Size = new System.Drawing.Size(419, 733);
             this.dataGridView7.TabIndex = 1;
             this.dataGridView7.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.Practice_RowAdded);
             // 
@@ -580,91 +706,15 @@
             this.PracticePanel_BackButton.UseVisualStyleBackColor = true;
             this.PracticePanel_BackButton.Click += new System.EventHandler(this.PracticePanel_BackButton_Click);
             // 
-            // UploadPathTextBox
-            // 
-            this.UploadPathTextBox.Location = new System.Drawing.Point(1130, 77);
-            this.UploadPathTextBox.Name = "UploadPathTextBox";
-            this.UploadPathTextBox.Size = new System.Drawing.Size(203, 20);
-            this.UploadPathTextBox.TabIndex = 1;
-            // 
-            // UploadPathButton
-            // 
-            this.UploadPathButton.Location = new System.Drawing.Point(1339, 74);
-            this.UploadPathButton.Name = "UploadPathButton";
-            this.UploadPathButton.Size = new System.Drawing.Size(75, 23);
-            this.UploadPathButton.TabIndex = 2;
-            this.UploadPathButton.Text = "Choose Files";
-            this.UploadPathButton.UseVisualStyleBackColor = true;
-            // 
-            // ClearUploadButton
-            // 
-            this.ClearUploadButton.Location = new System.Drawing.Point(1154, 128);
-            this.ClearUploadButton.Name = "ClearUploadButton";
-            this.ClearUploadButton.Size = new System.Drawing.Size(101, 44);
-            this.ClearUploadButton.TabIndex = 3;
-            this.ClearUploadButton.Text = "Clear All";
-            this.ClearUploadButton.UseVisualStyleBackColor = true;
-            // 
-            // CommitUploadButton
-            // 
-            this.CommitUploadButton.Location = new System.Drawing.Point(1275, 128);
-            this.CommitUploadButton.Name = "CommitUploadButton";
-            this.CommitUploadButton.Size = new System.Drawing.Size(106, 44);
-            this.CommitUploadButton.TabIndex = 4;
-            this.CommitUploadButton.Text = "Commit Changes";
-            this.CommitUploadButton.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView8
-            // 
-            this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView8.Location = new System.Drawing.Point(35, 56);
-            this.dataGridView8.Name = "dataGridView8";
-            this.dataGridView8.Size = new System.Drawing.Size(445, 94);
-            this.dataGridView8.TabIndex = 5;
-            // 
-            // dataGridView9
-            // 
-            this.dataGridView9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView9.Location = new System.Drawing.Point(35, 174);
-            this.dataGridView9.Name = "dataGridView9";
-            this.dataGridView9.Size = new System.Drawing.Size(1039, 216);
-            this.dataGridView9.TabIndex = 6;
-            // 
-            // dataGridView10
-            // 
-            this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView10.Location = new System.Drawing.Point(32, 409);
-            this.dataGridView10.Name = "dataGridView10";
-            this.dataGridView10.Size = new System.Drawing.Size(1042, 218);
-            this.dataGridView10.TabIndex = 7;
-            // 
-            // dataGridView11
-            // 
-            this.dataGridView11.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView11.Location = new System.Drawing.Point(32, 649);
-            this.dataGridView11.Name = "dataGridView11";
-            this.dataGridView11.Size = new System.Drawing.Size(448, 175);
-            this.dataGridView11.TabIndex = 8;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(1130, 205);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(284, 241);
-            this.textBox1.TabIndex = 9;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.PracticePanel);
             this.Controls.Add(this.matchesPanel);
             this.Controls.Add(this.statsPanel);
-            this.Controls.Add(this.PracticePanel);
             this.Controls.Add(this.UploadPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -685,12 +735,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.UploadPanel.ResumeLayout(false);
             this.UploadPanel.PerformLayout();
-            this.PracticePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
+            this.PracticePanel.ResumeLayout(false);
+            this.PracticePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -739,8 +790,6 @@
         private System.Windows.Forms.Button PracticePanel_BackButton;
         private System.Windows.Forms.Button PracticeButton;
         private System.Windows.Forms.DataGridView dataGridView7;
-        private System.Windows.Forms.Button PracticePanel_UndoButton;
-        private System.Windows.Forms.Button PracticePanel_SaveButton;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridView11;
         private System.Windows.Forms.DataGridView dataGridView10;
@@ -750,6 +799,13 @@
         private System.Windows.Forms.Button ClearUploadButton;
         private System.Windows.Forms.Button UploadPathButton;
         private System.Windows.Forms.TextBox UploadPathTextBox;
+        private System.Windows.Forms.Button AddPracticeButton;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
     }
 }
 

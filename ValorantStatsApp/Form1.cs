@@ -537,5 +537,55 @@ namespace ValorantStatsApp
         {
 
         }
+
+        private void AddPracticeButton_Click(object sender, EventArgs e)
+        {
+            string updateQuery = String.Format("INSERT INTO Practice VALUES ('{0}','{1}','{2}',CURDATE())", textBox2.Text, textBox3.Text, textBox4.Text);
+            MySqlTransaction tr = null;
+            con.Open();
+            try
+            {
+                tr = con.BeginTransaction();
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = con;
+                cmd.Transaction = tr;
+
+
+                cmd.CommandText = updateQuery;
+
+                cmd.ExecuteNonQuery();
+
+
+                tr.Commit();
+            }
+            catch (MySqlException ex)
+            {
+                try
+                {
+                    tr.Rollback();
+                }
+                catch (MySqlException ex1)
+                {
+                    MessageBox.Show(ex1.ToString());
+                }
+
+                MessageBox.Show(ex.ToString());
+            }
+            con.Close();
+            UpdateDataGridView7();
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox2.Focus();
+        }
+
+        private void PracticeBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AddPracticeButton_Click(this, new EventArgs());
+            }
+        }
     }
 }
