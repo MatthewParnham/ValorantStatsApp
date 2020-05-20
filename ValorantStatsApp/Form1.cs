@@ -42,6 +42,10 @@ namespace ValorantStatsApp
             matchesPanel.Show();
             statsPanel.Hide();
             loadChart();
+            matchesPanel.Show();
+            PracticePanel.Hide();
+            UploadPanel.Hide();
+            statsPanel.Hide();
         }
 
         private void loadChart()
@@ -465,6 +469,8 @@ namespace ValorantStatsApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            PracticePanel.Hide();
+            UploadPanel.Hide();
             matchesPanel.Hide();
             statsPanel.Show();
         }
@@ -472,6 +478,8 @@ namespace ValorantStatsApp
         private void button2_Click(object sender, EventArgs e)
         {
             matchesPanel.Show();
+            PracticePanel.Hide();
+            UploadPanel.Hide();
             statsPanel.Hide();
         }
 
@@ -485,14 +493,18 @@ namespace ValorantStatsApp
 
         private void UploadPage_BackButton_Click(object sender, EventArgs e)
         {
-            UploadPanel.Hide();
             matchesPanel.Show();
+            PracticePanel.Hide();
+            UploadPanel.Hide();
+            statsPanel.Hide();
         }
 
         private void UploadMatchButton_Click(object sender, EventArgs e)
         {
-            UploadPanel.Show();
             matchesPanel.Hide();
+            PracticePanel.Hide();
+            UploadPanel.Show();
+            statsPanel.Hide();
         }
 
         private void label13_Click(object sender, EventArgs e)
@@ -502,14 +514,18 @@ namespace ValorantStatsApp
 
         private void PracticePanel_BackButton_Click(object sender, EventArgs e)
         {
-            PracticePanel.Hide();
             matchesPanel.Show();
+            PracticePanel.Hide();
+            UploadPanel.Hide();
+            statsPanel.Hide();
         }
 
         private void PracticeButton_Click(object sender, EventArgs e)
         {
-            PracticePanel.Show();
             matchesPanel.Hide();
+            PracticePanel.Show();
+            UploadPanel.Hide();
+            statsPanel.Hide();
         }
 
         private void Practice_RowAdded(object sender, DataGridViewRowsAddedEventArgs e)
