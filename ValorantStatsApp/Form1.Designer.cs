@@ -206,7 +206,6 @@
             this.dataGridView2.TabIndex = 12;
             this.dataGridView2.Tag = "Scoreboard";
             this.dataGridView2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellChanged);
-            this.dataGridView2.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView2_RowDeleted);
             // 
             // label4
             // 
@@ -381,7 +380,6 @@
             this.label13.Size = new System.Drawing.Size(140, 13);
             this.label13.TabIndex = 12;
             this.label13.Text = "Performance in Games Won";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // dataGridView6
             // 
@@ -694,7 +692,6 @@
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.Size = new System.Drawing.Size(419, 733);
             this.dataGridView7.TabIndex = 1;
-            this.dataGridView7.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.Practice_RowAdded);
             // 
             // PracticePanel_BackButton
             // 

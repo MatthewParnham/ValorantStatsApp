@@ -20,6 +20,7 @@ namespace ValorantStatsApp
         private string ConString = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
         private MySqlConnection con;
 
+        //Runs on start up
         public Form1()
         {
             InitializeComponent();
@@ -48,6 +49,7 @@ namespace ValorantStatsApp
             statsPanel.Hide();
         }
 
+        //Loads the charts on the stats page
         private void loadChart()
         {
             string query = String.Format("SELECT Kills, Date FROM Scoreboard JOIN MatchDetails MD on Scoreboard.MatchID = MD.MatchID WHERE PlayerName LIKE '%{0}%' ORDER BY Date",UsernameBox.Text);
@@ -65,14 +67,9 @@ namespace ValorantStatsApp
             chart2.DataSource = data2;
         }
 
-        private void dataGridView2_RowDeleted(object sender, DataGridViewRowEventArgs e)
-        {
-
-        }
-
+        //Handles deleting rows in the MatchDetails table
         private void dataGridView1_RowDeleted(object sender, DataGridViewRowCancelEventArgs e)
         {
-            Debug.WriteLine(e.Row.ToString());
             string matchID = e.Row.Cells[0].Value.ToString();
             string deleteQuery = String.Format("UPDATE MatchDetails SET isDeleted = 1 WHERE MatchID = {0}", matchID);
             MySqlTransaction tr = null;
@@ -110,6 +107,7 @@ namespace ValorantStatsApp
             UpdateMatchDetails();
         }
 
+        //Handles updating all data grids
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             UpdateScoreboard();
@@ -117,6 +115,7 @@ namespace ValorantStatsApp
             UpdatePerformance();
         }
 
+        //Handles Update queries
         private void dataGridView2_CellChanged(object sender, DataGridViewCellEventArgs e)
         {
             UpdateCell(dataGridView2, e.RowIndex, e.ColumnIndex);
@@ -132,10 +131,12 @@ namespace ValorantStatsApp
             UpdateCell(dataGridView4, e.RowIndex, e.ColumnIndex);
         }
 
+        //Update transaction
         private void UpdateCell(DataGridView dgv, int row, int col)
         {
             string colHeader = dgv.Columns[col].HeaderText;
             string newValue = dgv.Rows[row].Cells[col].Value.ToString();
+            //Convert bools to 1/0
             if (newValue.ToLower() == "true")
             {
                 newValue = "1";
@@ -184,6 +185,7 @@ namespace ValorantStatsApp
             con.Close();
         }
 
+        //Subquery to get extra stats
         private void UpdateDataGridView5()
         {
             string CmdString = String.Format("SELECT AVGCombatScore, Kills, Deaths, Assists FROM Scoreboard WHERE PlayerName = '{0}' AND MatchID IN (SELECT MatchID FROM MatchDetails WHERE Win = 1)", UsernameBox.Text);
@@ -292,6 +294,7 @@ namespace ValorantStatsApp
             WinLossComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
+        //Main function used to query data
         private DataTable CreateQuery(string CmdString)
         {
             MySqlDataAdapter sda = new MySqlDataAdapter(CmdString, con);
@@ -350,6 +353,7 @@ namespace ValorantStatsApp
             UpdateScoreboard();
         }
 
+        //Generate CSV
         private void MatchReportButton_Click(object sender, EventArgs e)
         {
             SaveFileDialog fDialog = new SaveFileDialog
@@ -507,11 +511,6 @@ namespace ValorantStatsApp
             statsPanel.Hide();
         }
 
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void PracticePanel_BackButton_Click(object sender, EventArgs e)
         {
             matchesPanel.Show();
@@ -526,16 +525,6 @@ namespace ValorantStatsApp
             PracticePanel.Show();
             UploadPanel.Hide();
             statsPanel.Hide();
-        }
-
-        private void Practice_RowAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            Debug.WriteLine(dataGridView7.Rows[e.RowIndex].Cells[0].Value);
-        }
-
-        private void PracticePanel_UndoButton_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void AddPracticeButton_Click(object sender, EventArgs e)
@@ -580,6 +569,7 @@ namespace ValorantStatsApp
             textBox2.Focus();
         }
 
+        //Allow enter to submit practice data
         private void PracticeBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
